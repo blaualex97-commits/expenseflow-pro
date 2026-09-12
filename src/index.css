@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+:root {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background: #070b0f;
+  color: #f8fafc;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: #070b0f;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at 70% 0%,
+      rgba(52, 211, 153, 0.055),
+      transparent 30%
+    ),
+    #070b0f;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+select {
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgba(110, 231, 183, 0.8);
+  outline-offset: 2px;
+}
+
+.form-label {
+  display: grid;
+  gap: 8px;
+  color: #94a3b8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.premium-input {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 14px;
+  background: #090e13;
+  color: #f8fafc;
+  padding: 13px 15px;
+  outline: none;
+
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.premium-input::placeholder {
+  color: #475569;
+}
+
+.premium-input:focus {
+  border-color: rgba(110, 231, 183, 0.45);
+  box-shadow:
+    0 0 0 4px rgba(52, 211, 153, 0.055);
+}
+
+select.premium-input option {
+  background: #0c1218;
+  color: white;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070b0f;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid #070b0f;
+  border-radius: 999px;
+  background: #1b2a28;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #254237;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.5;
+}
+
+/* =========================
+   SIDEBAR RESPONSIVE FIX
+   ========================= */
+
+.expense-sidebar {
+  min-height: 0;
+  overflow: hidden;
+}
+
+/*
+  Pe ferestre cu înălțime mică ascundem cardul promo.
+  Astfel navigația nu se suprapune niciodată peste el.
+*/
+@media (min-width: 1280px) and (max-height: 720px) {
+  .expense-pro-card {
+    display: none !important;
+  }
+}
+
+/*
+  Pentru laptop-uri foarte joase păstrăm sidebar-ul
+  respirabil fără overflow vizual.
+*/
+@media (min-width: 1280px) and (max-height: 820px) {
+  .expense-sidebar nav {
+    margin-top: 1rem;
+  }
+
+  .expense-sidebar nav button {
+    padding-top: 0.65rem;
+    padding-bottom: 0.65rem;
+  }
+}
+
+/*
+  Prevenim scroll-ul orizontal accidental.
+*/
+html,
+body,
+#root {
+  max-width: 100%;
+  overflow-x: hidden;
+}
